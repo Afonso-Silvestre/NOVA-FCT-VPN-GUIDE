@@ -13,7 +13,7 @@ For the first line of the file paste into it:
 ```bash
 #!/bin/bash
 ```
-And then the line above with your clip username already in it.<br>
+And then paste the line above with your clip username already in it.<br>
 Open a terminal in the directory where you created this file and run:
 ```
 chmod +x vpn.sh
