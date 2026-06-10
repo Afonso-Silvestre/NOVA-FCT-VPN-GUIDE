@@ -6,7 +6,7 @@ After installing run the following command in your terminal:
 sudo snx-rs -s vpn.fct.unl.pt -u CLIP_USERNAME -o vpn_Username_Password -X true -T tcpt
 ```
 
-Where `CLIP_USERNAME` should be the the username for your clip login.
+Where `CLIP_USERNAME` is should be the username for your clip login.
 
 If you wish to not have to write this everytime, create a .sh file e.g. vpn.sh<br>
 For the first line of the file paste into it:
