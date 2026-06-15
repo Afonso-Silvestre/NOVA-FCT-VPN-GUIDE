@@ -1,5 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=VPN
-Exec=path_to_sh_file
-Terminal=true
