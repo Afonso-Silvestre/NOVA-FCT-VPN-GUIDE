@@ -1,7 +1,7 @@
 import subprocess, shutil, getpass, os, stat
 from pathlib import Path
 
-def move(src: Path) -> None:
+def moveToDesktop(src: Path) -> None:
     username = getpass.getuser()
     shutil.move(src, f"/home/{username}/Desktop/{src.name}")
 
@@ -23,6 +23,6 @@ with open(SHORTCUT_FILE, "w", encoding="utf-8") as file:
 
 os.chmod(BASH_PATH, os.stat(BASH_PATH).st_mode | stat.S_IEXEC) # make vpn.sh executable
 
-os.chmod(SHORTCUT_PATH, os.stat(SHORTCUT_PATH).st_mode | stat.S_IEXEC)
+os.chmod(SHORTCUT_PATH, os.stat(SHORTCUT_PATH).st_mode | stat.S_IEXEC) # make the shorcut executable
 
-move(SHORTCUT_PATH)
+moveToDesktop(SHORTCUT_PATH)
