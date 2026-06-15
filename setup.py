@@ -13,7 +13,7 @@ SHORTCUT_SCRIPT: str = "[Desktop Entry]\nType=Application\nName=VPN\nExec=PATH\n
 SHORTCUT_FILE: str = "VPN.desktop"
 SHORTCUT_PATH = Path(SHORTCUT_FILE).resolve()
 
-username = input("What is your clip username?\n")
+username = input("What is your CLIP username?\n")
 
 with open(BASH_FILE, "w", encoding="utf-8") as file: # opens file, if it doesnt exist creates it and wipes it clean (w mode)
     file.write(BASH_SCRIPT.replace("CLIP_USERNAME", username, 1))
