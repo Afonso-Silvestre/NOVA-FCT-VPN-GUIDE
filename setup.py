@@ -1,4 +1,4 @@
-import subprocess, shutil, getpass, os, stat
+import shutil, os, stat
 from pathlib import Path
 
 
