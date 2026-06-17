@@ -17,7 +17,7 @@ with open(BASH_PATH, "w", encoding="utf-8") as file:
     file.write(BASH_SCRIPT.replace("CLIP_USERNAME", username, 1))
 
 with open(SHORTCUT_PATH, "w", encoding="utf-8") as file:
-    file.write(SHORTCUT_SCRIPT.replace("PATH", str(BASH_PATH), 1))
+    file.write(SHORTCUT_SCRIPT.replace("PATH", str(BASH_PATH.resolve()), 1))
 
 os.chmod(BASH_PATH, os.stat(BASH_PATH).st_mode | stat.S_IEXEC)
 
