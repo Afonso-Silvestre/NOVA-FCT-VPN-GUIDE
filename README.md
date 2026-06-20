@@ -8,4 +8,4 @@ Do not change the directory of vpn.sh, nor its name.
 
 **Author**: Afonso Silvestre<br>
 **Python Version**: 3.14.5<br>
-**Date**: 2026-06-20
+**Date**: June 2026
