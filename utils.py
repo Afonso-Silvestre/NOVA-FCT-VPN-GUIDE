@@ -1,9 +1,20 @@
+"""
+UTILS.PY
+
+Author: Afonso Silvestre
+Date: 20-06-2026
+Description:
+    This script simply has auxiliary functions used in setup.py
+    It should not be ran individually nor changed.
+
+"""
+
 from pathlib import Path
 import shutil, os, stat, subprocess
 
 def write_to_file(f: Path, text: str) -> None:
     """
-    Writes `text` to the file `f`.
+    Writes `text` to file `f`.
     """
     with open(f, "w", encoding="utf-8") as file:
         file.write(text)
@@ -29,6 +40,8 @@ def move_to_desktop(src: Path) -> Path:
     """
     Moves `src` to the Desktop folder.
     """
+    # this terminal command gets the desktop path no matter its name
+    # (even if the system is set to German or Portuguese)
     new_path = Path(subprocess.run(["xdg-user-dir", "DESKTOP"], capture_output=True, text=True, check=True).stdout.strip()) / src.name
     shutil.move(src, new_path)
     return new_path

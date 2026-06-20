@@ -1,6 +1,21 @@
-from pathlib import Path
-from utils import move_to_desktop, make_executable, write_to_file, move_to_home
+"""
+SETUP.PY
+
+Author: Afonso Silvestre
+Date: 20-06-2026
+Description:
+    This script creates a bash file that initializes
+    the vpn in the home folder, and creates a desktop
+    shortcut for the file as well.
+
+Usage:
+    python setup.py    
+
+"""
+
 import subprocess
+from pathlib import Path
+from utils import move_to_desktop, move_to_home, make_executable, write_to_file
 
 BASH_PATH = Path("vpn.sh")
 BASH_SCRIPT: str = "#!/bin/bash\necho \"RUNNING NOVA FCT VPN\"\nsudo snx-rs -s vpn.fct.unl.pt -u CLIP_USERNAME -o vpn_Username_Password -X true -T tcpt"
