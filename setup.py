@@ -1,4 +1,3 @@
-import shutil, os, stat
 from pathlib import Path
 from utils import move_to_desktop, make_executable, write_to_file
 
