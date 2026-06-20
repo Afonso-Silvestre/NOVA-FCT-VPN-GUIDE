@@ -1,9 +1,6 @@
 import shutil, os, stat
 from pathlib import Path
-
-
-def moveToDesktop(src: Path) -> None:
-    shutil.move(src, Path.home() / "Desktop" / src.name)
+from utils import moveToDesktop, makeExec, writeToFile
 
 BASH_PATH = Path("vpn.sh")
 BASH_SCRIPT: str = "#!/bin/bash\necho \"RUNNING NOVA FCT VPN\"\nsudo snx-rs -s vpn.fct.unl.pt -u CLIP_USERNAME -o vpn_Username_Password -X true -T tcpt"
@@ -13,14 +10,10 @@ SHORTCUT_SCRIPT: str = "[Desktop Entry]\nType=Application\nName=VPN\nExec=PATH\n
 
 username = input("What is your CLIP username?\n")
 
-with open(BASH_PATH, "w", encoding="utf-8") as file:
-    file.write(BASH_SCRIPT.replace("CLIP_USERNAME", username, 1))
+writeToFile(BASH_PATH, BASH_SCRIPT.replace("CLIP_USERNAME", username, 1))
+writeToFile(SHORTCUT_PATH, SHORTCUT_SCRIPT.replace("PATH", str(BASH_PATH.resolve()), 1))
 
-with open(SHORTCUT_PATH, "w", encoding="utf-8") as file:
-    file.write(SHORTCUT_SCRIPT.replace("PATH", str(BASH_PATH.resolve()), 1))
-
-os.chmod(BASH_PATH, os.stat(BASH_PATH).st_mode | stat.S_IEXEC)
-
-os.chmod(SHORTCUT_PATH, os.stat(SHORTCUT_PATH).st_mode | stat.S_IEXEC)
+makeExec(BASH_PATH)
+makeExec(SHORTCUT_PATH)
 
 moveToDesktop(SHORTCUT_PATH)
