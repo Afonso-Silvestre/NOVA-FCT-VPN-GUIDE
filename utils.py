@@ -10,7 +10,7 @@ Description:
 """
 
 from pathlib import Path
-import shutil, os, stat, subprocess
+import os, stat, subprocess
 
 def write_to_file(f: Path, text: str) -> None:
     """
@@ -28,20 +28,5 @@ def make_executable(f: Path) -> None:
     """
     os.chmod(f, os.stat(f).st_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
 
-def move_to_home(src: Path) -> Path:
-    """
-    Moves `src` to the Home folder.
-    """
-    new_path = Path.home() / src.name
-    shutil.move(src, new_path)
-    return new_path
-
-def move_to_desktop(src: Path) -> Path:
-    """
-    Moves `src` to the Desktop folder.
-    """
-    # this terminal command gets the desktop path no matter its name
-    # (even if the system is set to German or Portuguese)
-    new_path = Path(subprocess.run(["xdg-user-dir", "DESKTOP"], capture_output=True, text=True, check=True).stdout.strip()) / src.name
-    shutil.move(src, new_path)
-    return new_path
+def get_desktop_path() -> Path:
+    return Path(subprocess.run(["xdg-user-dir", "DESKTOP"], capture_output=True, text=True, check=True).stdout.strip())
