@@ -17,10 +17,18 @@ def make_executable(f: Path) -> None:
     """
     os.chmod(f, os.stat(f).st_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
 
-def move_to_desktop(src: Path) -> None:
+def move_to_home(src: Path) -> Path:
+    """
+    Moves `src` to the Home folder.
+    """
+    new_path = Path.home() / src.name
+    shutil.move(src, new_path)
+    return new_path
+
+def move_to_desktop(src: Path) -> Path:
     """
     Moves `src` to the Desktop folder.
     """
-    desktop = Path(subprocess.run(["xdg-user-dir", "DESKTOP"], capture_output=True, text=True, check=True).stdout.strip())
-
-    shutil.move(src, desktop / src.name)
+    new_path = Path(subprocess.run(["xdg-user-dir", "DESKTOP"], capture_output=True, text=True, check=True).stdout.strip()) / src.name
+    shutil.move(src, new_path)
+    return new_path
