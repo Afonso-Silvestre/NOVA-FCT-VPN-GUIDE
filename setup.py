@@ -7,6 +7,8 @@ Description:
     This script creates a bash file that initializes
     the vpn in the home folder, and creates a desktop
     shortcut for the file as well.
+    We first create the files, write their contents, move their
+    directory and then make them executable.
 
 Usage:
     python setup.py    
@@ -33,4 +35,5 @@ write_to_file(SHORTCUT_PATH, SHORTCUT_SCRIPT.replace("PATH", str(BASH_PATH.resol
 SHORTCUT_PATH = move_to_desktop(SHORTCUT_PATH)
 make_executable(SHORTCUT_PATH)
 
-subprocess.run(["gio", "set", str(SHORTCUT_PATH), "metadata::trusted", "true"], check=False) # making the shortcut trusted (no comfirming to launch) 
+# making the shortcut trusted (no comfirming to launch), only needed for some distros
+subprocess.run(["gio", "set", str(SHORTCUT_PATH), "metadata::trusted", "true"], check=False)
