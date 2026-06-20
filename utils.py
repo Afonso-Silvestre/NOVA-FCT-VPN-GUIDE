@@ -19,7 +19,7 @@ def make_executable(f: Path) -> None:
 
 def move_to_desktop(src: Path) -> None:
     """
-    Moves file `src` to the Desktop folder.
+    Moves `src` to the Desktop folder.
     """
     desktop = Path(subprocess.run(["xdg-user-dir", "DESKTOP"], capture_output=True, text=True, check=True).stdout.strip())
 

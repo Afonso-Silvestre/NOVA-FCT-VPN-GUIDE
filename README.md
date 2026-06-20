@@ -5,6 +5,11 @@ After installing simply run the `setup.py` file and it'll automatically create t
 a desktop shortcut called VPN for it.<br>
 Do not change the directory of vpn.sh, nor its name.
 
+## Compatibility
+This setup should work on major linux distros such as Mint, Ubuntu, Debian, Arch, Fedora.
+All debugging would be straightfoward due to the simplicity of this script.
+For other distros compatibility is NOT assured.
+
 
 **Author**: Afonso Silvestre<br>
 **Python Version**: 3.14.5<br>
